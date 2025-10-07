@@ -1,5 +1,6 @@
 package com.example.mydaily
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -90,4 +91,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            toTodoPage()
+        }
+    }
+    private fun toTodoPage() {
+        val intent = Intent(this, TodoActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
+
